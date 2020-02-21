@@ -1,0 +1,3 @@
+domain: circle.example.com
+repo: github.com/teddyking/circle
+version: "2"
