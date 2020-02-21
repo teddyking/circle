@@ -1,0 +1,26 @@
+# permissions to do edit cloudfoundries.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cloudfoundry-editor-role
+rules:
+- apiGroups:
+  - runtime.circle.example.com
+  resources:
+  - cloudfoundries
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - runtime.circle.example.com
+  resources:
+  - cloudfoundries/status
+  verbs:
+  - get
+  - patch
+  - update

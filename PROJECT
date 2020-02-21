@@ -1,3 +1,7 @@
 domain: circle.example.com
 repo: github.com/teddyking/circle
+resources:
+- group: runtime
+  kind: CloudFoundry
+  version: v1alpha1
 version: "2"

@@ -1,0 +1,7 @@
+apiVersion: runtime.circle.example.com/v1alpha1
+kind: CloudFoundry
+metadata:
+  name: cloudfoundry-sample
+spec:
+  # Add fields here
+  foo: bar
