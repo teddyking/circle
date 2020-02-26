@@ -24,6 +24,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	runtimev1alpha1 "github.com/teddyking/circle/api/v1alpha1"
+	"github.com/teddyking/circle/pkg/reconcilers"
 )
 
 // CloudFoundryReconciler reconciles a CloudFoundry object
@@ -40,9 +41,9 @@ func (r *CloudFoundryReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error
 	_ = context.Background()
 	_ = r.Log.WithValues("cloudfoundry", req.NamespacedName)
 
-	// your logic here
+	reconciler := reconcilers.NewCloudFoundryReconciler()
 
-	return ctrl.Result{}, nil
+	return reconciler.Reconcile(req)
 }
 
 func (r *CloudFoundryReconciler) SetupWithManager(mgr ctrl.Manager) error {

@@ -34,13 +34,33 @@ spec:
         spec:
           description: CloudFoundrySpec defines the desired state of CloudFoundry
           properties:
-            foo:
-              description: Foo is an example field of CloudFoundry. Edit CloudFoundry_types.go
-                to remove/update
+            api:
               type: string
+            authInfo:
+              description: CloudFoundryAuthInfo provides config for authenticating
+                to the CloudFoundry
+              properties:
+                secretRef:
+                  description: ObjectReference contains enough information to let
+                    you locate the referenced object.
+                  properties:
+                    name:
+                      description: Name of the referent.
+                      type: string
+                    namespace:
+                      description: Namespace of the referent.
+                      type: string
+                  type: object
+              type: object
+            skipSSLValidation:
+              type: boolean
           type: object
         status:
           description: CloudFoundryStatus defines the observed state of CloudFoundry
+          properties:
+            lastReconcileTime:
+              format: date-time
+              type: string
           type: object
       type: object
   version: v1alpha1

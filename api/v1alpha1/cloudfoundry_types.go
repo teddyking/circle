@@ -19,22 +19,30 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
 // CloudFoundrySpec defines the desired state of CloudFoundry
 type CloudFoundrySpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of CloudFoundry. Edit CloudFoundry_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	API               string                `json:"api,omitempty"`
+	AuthInfo          *CloudFoundryAuthInfo `json:"authInfo,omitempty"`
+	SkipSSLValidation bool                  `json:"skipSSLValidation,omitempty"`
 }
 
 // CloudFoundryStatus defines the observed state of CloudFoundry
 type CloudFoundryStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	LastReconcileTime *metav1.Time `json:"lastReconcileTime,omitempty"`
+}
+
+// CloudFoundryAuthInfo provides config for authenticating to the CloudFoundry
+type CloudFoundryAuthInfo struct {
+	SecretRef *ObjectReference `json:"secretRef,omitempty"`
+}
+
+// ObjectReference contains enough information to let you locate the
+// referenced object.
+type ObjectReference struct {
+	// Namespace of the referent.
+	Namespace string `json:"namespace,omitempty"`
+	// Name of the referent.
+	Name string `json:"name,omitempty"`
 }
 
 // +kubebuilder:object:root=true
