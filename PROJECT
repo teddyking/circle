@@ -5,4 +5,7 @@ resources:
 - group: runtime
   kind: CloudFoundry
   version: v1alpha1
+- group: cf
+  kind: Org
+  version: v1alpha1
 version: "2"

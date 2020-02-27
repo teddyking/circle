@@ -1,0 +1,7 @@
+apiVersion: cf.circle.example.com/v1alpha1
+kind: Org
+metadata:
+  name: org-sample
+spec:
+  # Add fields here
+  foo: bar
