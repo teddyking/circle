@@ -23,7 +23,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	runtimev1alpha1 "github.com/teddyking/circle/api/v1alpha1"
+	circlev1alpha1 "github.com/teddyking/circle/apis/v1alpha1"
 	"github.com/teddyking/circle/pkg/reconcilers"
 )
 
@@ -48,6 +48,6 @@ func (r *CloudFoundryReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error
 
 func (r *CloudFoundryReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&runtimev1alpha1.CloudFoundry{}).
+		For(&circlev1alpha1.CloudFoundry{}).
 		Complete(r)
 }
