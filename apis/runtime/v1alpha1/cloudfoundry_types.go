@@ -46,6 +46,7 @@ type ObjectReference struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:resource:scope=Cluster,shortName=cf
 
 // CloudFoundry is the Schema for the cloudfoundries API
 type CloudFoundry struct {

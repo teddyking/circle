@@ -13,8 +13,10 @@ spec:
     kind: CloudFoundry
     listKind: CloudFoundryList
     plural: cloudfoundries
+    shortNames:
+    - cf
     singular: cloudfoundry
-  scope: Namespaced
+  scope: Cluster
   validation:
     openAPIV3Schema:
       description: CloudFoundry is the Schema for the cloudfoundries API

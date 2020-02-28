@@ -14,7 +14,7 @@ spec:
     listKind: OrgList
     plural: orgs
     singular: org
-  scope: Namespaced
+  scope: Cluster
   validation:
     openAPIV3Schema:
       description: Org is the Schema for the orgs API
@@ -34,8 +34,7 @@ spec:
         spec:
           description: OrgSpec defines the desired state of Org
           properties:
-            foo:
-              description: Foo is an example field of Org. Edit Org_types.go to remove/update
+            externalName:
               type: string
           type: object
         status:

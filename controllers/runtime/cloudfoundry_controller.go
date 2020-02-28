@@ -25,6 +25,7 @@ import (
 
 	runtimev1alpha1 "github.com/teddyking/circle/apis/runtime/v1alpha1"
 	"github.com/teddyking/circle/pkg/reconcilers"
+	"github.com/teddyking/circle/pkg/repositories"
 )
 
 // CloudFoundryReconciler reconciles a CloudFoundry object
@@ -41,7 +42,9 @@ func (r *CloudFoundryReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error
 	_ = context.Background()
 	_ = r.Log.WithValues("cloudfoundry", req.NamespacedName)
 
-	reconciler := reconcilers.NewCloudFoundryReconciler()
+	reconciler := &reconcilers.CloudFoundryReconciler{
+		RuntimeRepo: &repositories.Runtime{KubeClient: r.Client},
+	}
 
 	return reconciler.Reconcile(req)
 }

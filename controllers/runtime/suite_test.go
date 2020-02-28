@@ -43,7 +43,7 @@ func TestAPIs(t *testing.T) {
 	RegisterFailHandler(Fail)
 
 	RunSpecsWithDefaultAndCustomReporters(t,
-		"Controller Suite",
+		"Runtime Controller Suite",
 		[]Reporter{envtest.NewlineReporter{}})
 }
 

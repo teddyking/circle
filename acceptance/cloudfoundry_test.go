@@ -40,7 +40,7 @@ var _ = Describe("CloudFoundry", func() {
 			Expect(kubectl.Delete(testCloudFoundryYML)).To(Succeed())
 		})
 
-		It("creates Org resources in k8s for each Org resource in the CloudFoundry", func() {
+		XIt("creates Org resources in k8s for each Org resource in the CloudFoundry", func() {
 			Eventually(func() error {
 				return kubectl.Get("org", "acceptance-org")
 			}).Should(Succeed())
