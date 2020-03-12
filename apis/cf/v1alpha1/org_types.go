@@ -21,7 +21,7 @@ import (
 
 // OrgSpec defines the desired state of Org
 type OrgSpec struct {
-	ExternalName string `json:"externalName,omitempty"`
+	Guid string `json:"guid,omitempty"`
 }
 
 // OrgStatus defines the observed state of Org

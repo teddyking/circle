@@ -25,9 +25,12 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
+	"github.com/cloudfoundry-community/go-cfclient"
 	cfv1alpha1 "github.com/teddyking/circle/apis/cf/v1alpha1"
 	runtimev1alpha1 "github.com/teddyking/circle/apis/runtime/v1alpha1"
 	runtimecontrollers "github.com/teddyking/circle/controllers/runtime"
+	"github.com/teddyking/circle/pkg/reconcilers"
+	"github.com/teddyking/circle/pkg/repositories"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -71,6 +74,10 @@ func main() {
 		Client: mgr.GetClient(),
 		Log:    ctrl.Log.WithName("runtimecontrollers").WithName("CloudFoundry"),
 		Scheme: mgr.GetScheme(),
+		CFRepo: &repositories.CloudFoundry{KubeClient: mgr.GetClient()},
+		CFClientCreator: func(config *cfclient.Config) (reconcilers.CFClient, error) {
+			return cfclient.NewClient(config)
+		},
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "runtimecontroller", "CloudFoundry")
 		os.Exit(1)

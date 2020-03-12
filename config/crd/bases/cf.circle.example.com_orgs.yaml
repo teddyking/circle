@@ -34,7 +34,7 @@ spec:
         spec:
           description: OrgSpec defines the desired state of Org
           properties:
-            externalName:
+            guid:
               type: string
           type: object
         status:

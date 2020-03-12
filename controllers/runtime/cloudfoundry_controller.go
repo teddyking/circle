@@ -33,6 +33,9 @@ type CloudFoundryReconciler struct {
 	client.Client
 	Log    logr.Logger
 	Scheme *runtime.Scheme
+
+	CFRepo          reconcilers.CFRepo
+	CFClientCreator reconcilers.CFClientCreator
 }
 
 // +kubebuilder:rbac:groups=runtime.circle.example.com,resources=cloudfoundries,verbs=get;list;watch;create;update;patch;delete
@@ -43,7 +46,9 @@ func (r *CloudFoundryReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error
 	_ = r.Log.WithValues("cloudfoundry", req.NamespacedName)
 
 	reconciler := &reconcilers.CloudFoundryReconciler{
-		RuntimeRepo: &repositories.Runtime{KubeClient: r.Client},
+		RuntimeRepo:     &repositories.Runtime{KubeClient: r.Client},
+		CFRepo:          r.CFRepo,
+		CFClientCreator: r.CFClientCreator,
 	}
 
 	return reconciler.Reconcile(req)

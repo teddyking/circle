@@ -3,6 +3,7 @@ module github.com/teddyking/circle
 go 1.13
 
 require (
+	github.com/cloudfoundry-community/go-cfclient v0.0.0-20190808214049-35bcce23fc5f
 	github.com/go-logr/logr v0.1.0
 	github.com/golang/protobuf v1.3.3 // indirect
 	github.com/onsi/ginkgo v1.8.0
